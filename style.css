@@ -1,0 +1,202 @@
+/* Importando uma fonte limpa do Google Fonts, similar à da Apple */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* --- Variáveis de Cores e Estilos Globais --- */
+:root {
+    --blue-primary: #0071e3; /* Azul vibrante da Apple */
+    --background-color: #f5f5f7; /* Cinza claro de fundo da Apple */
+    --card-background: #ffffff;
+    --text-primary: #1d1d1f; /* Texto principal (preto suave) */
+    --text-secondary: #6e6e73; /* Texto secundário (cinza) */
+    --border-color: #d2d2d7;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-primary);
+    display: flex;
+}
+
+/* --- Barra Lateral (Sidebar) --- */
+.sidebar {
+    width: 260px;
+    background-color: var(--card-background);
+    height: 100vh;
+    position: fixed;
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.sidebar-header h2 {
+    font-weight: 600;
+    padding-bottom: 20px;
+}
+
+.sidebar nav ul {
+    list-style: none;
+}
+
+.sidebar nav li a {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 15px;
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-weight: 500;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.sidebar nav li a .fas {
+    width: 20px;
+    text-align: center;
+}
+
+.sidebar nav li a:hover,
+.sidebar nav li.active a {
+    background-color: var(--blue-primary);
+    color: #fff;
+}
+
+.sidebar-footer {
+    margin-top: auto;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+/* --- Conteúdo Principal --- */
+.main-content {
+    margin-left: 260px; /* Mesma largura da sidebar */
+    padding: 40px;
+    width: calc(100% - 260px);
+}
+
+.main-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.main-header p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-top: 5px;
+}
+
+/* --- Seções de Conteúdo --- */
+.events-section, .churches-section {
+    margin-top: 40px;
+}
+
+h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+/* Card de Evento */
+.event-card {
+    display: flex;
+    align-items: center;
+    background-color: var(--card-background);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 15px;
+    box-shadow: var(--shadow);
+}
+
+.event-date {
+    text-align: center;
+    margin-right: 20px;
+    color: var(--blue-primary);
+    font-weight: 600;
+}
+
+.event-date strong {
+    font-size: 0.9rem;
+}
+
+.event-date span {
+    font-size: 2rem;
+    display: block;
+    line-height: 1;
+}
+
+.event-details h3 {
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.event-details p {
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Grid das Igrejas */
+.church-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 25px;
+}
+
+/* Card da Igreja */
+.church-card {
+    background-color: var(--card-background);
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.church-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.pastor-photo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 3px solid var(--border-color);
+}
+
+.church-card h3 {
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.church-card p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--blue-primary);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #005bb5; /* Um azul um pouco mais escuro */
+}
