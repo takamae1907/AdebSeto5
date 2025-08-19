@@ -1,0 +1,409 @@
+/* Importando uma fonte limpa do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* --- Variáveis de Cores e Estilos Globais --- */
+:root {
+    --blue-primary: #0071e3;
+    --background-color: #f5f5f7;
+    --card-background: #ffffff;
+    --text-primary: #1d1d1f;
+    --text-secondary: #6e6e73;
+    --border-color: #d2d2d7;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-primary);
+}
+
+/* --- Layout Principal --- */
+.main-content {
+    margin-left: 260px;
+    padding: 40px;
+}
+
+.page-full-content .main-content {
+    margin-right: 0;
+    width: calc(100% - 260px);
+}
+
+/* --- Barra Lateral Esquerda (Sidebar) --- */
+.sidebar {
+    width: 260px;
+    background-color: var(--card-background);
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    z-index: 1000;
+}
+
+.sidebar-header h2 {
+    font-weight: 600;
+    padding-bottom: 20px;
+}
+
+.sidebar nav ul {
+    list-style: none;
+}
+
+.sidebar nav li a {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 15px;
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-weight: 500;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.sidebar nav li a .fas {
+    width: 20px;
+    text-align: center;
+}
+
+.sidebar nav li a:hover,
+.sidebar nav li.active a {
+    background-color: var(--blue-primary);
+    color: #fff;
+}
+
+.sidebar-footer {
+    margin-top: auto;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+/* --- Conteúdo Principal --- */
+.main-header {
+    margin-bottom: 25px;
+}
+
+.main-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.main-header p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-top: 5px;
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--blue-primary);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+}
+
+.btn:hover {
+    background-color: #005bb5;
+}
+
+.btn .fas {
+    margin-right: 8px;
+}
+
+/* --- Modal Genérico --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.modal-content {
+    background-color: var(--card-background);
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    padding: 25px;
+    width: 90%;
+    position: relative;
+}
+
+.close-modal-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--text-primary);
+}
+
+.modal-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+
+/* =================================================== */
+/* --- ESTILOS DA PÁGINA DE DOCUMENTOS --- */
+/* =================================================== */
+.document-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.search-filter-wrapper {
+    display: flex;
+    gap: 15px;
+    flex-grow: 1;
+}
+
+.document-controls input[type="search"],
+.document-controls select {
+    font-family: 'Inter', sans-serif;
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background-color: var(--card-background);
+    font-size: 0.95rem;
+}
+
+.document-controls input[type="search"] {
+    min-width: 250px;
+    flex-grow: 1;
+}
+
+.table-container {
+    background-color: var(--card-background);
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    padding: 15px 25px;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table thead th {
+    text-align: left;
+    padding: 15px 10px;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-bottom: 2px solid var(--border-color);
+}
+
+table tbody td {
+    padding: 15px 10px;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-primary);
+    vertical-align: middle;
+}
+
+table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+table tbody td .fas {
+    color: var(--text-secondary);
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
+
+.fa-file-pdf {
+    color: #e53935;
+}
+
+.fa-file-word {
+    color: #1e88e5;
+}
+
+.fa-file-excel {
+    color: #43a047;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.action-btn {
+    background: none;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.action-btn:hover {
+    background-color: var(--background-color);
+    color: var(--text-primary);
+}
+
+.action-btn.delete-btn:hover {
+    color: #e53935;
+    border-color: #e53935;
+}
+
+#document-modal .modal-content {
+    max-width: 500px;
+}
+
+#document-form .form-group {
+    margin-bottom: 15px;
+}
+
+#document-form label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+}
+
+#document-form input,
+#document-form select {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+#document-form small {
+    display: block;
+    margin-top: 5px;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+#document-form button {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.file-drop-area {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    border: 2px dashed var(--border-color);
+    border-radius: 8px;
+    background-color: var(--background-color);
+    transition: border-color 0.3s, background-color 0.3s;
+    text-align: center;
+    color: var(--text-secondary);
+}
+
+.file-drop-area:hover {
+    border-color: var(--blue-primary);
+    background-color: #eaf5ff;
+}
+
+.file-drop-area .fas {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: var(--blue-primary);
+}
+
+.file-drop-area .file-input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+    opacity: 0;
+}
+
+#file-name-display {
+    margin-top: 10px;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+/* --- RESPONSIVIDADE --- */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 1100;
+}
+
+@media (max-width: 992px) {
+    .sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .sidebar.is-open {
+        transform: translateX(0);
+    }
+
+    .main-content,
+    .page-full-content .main-content {
+        width: 100%;
+        margin-left: 0;
+        padding: 20px;
+    }
+
+    .main-header {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .main-header h1 {
+        width: 100%;
+        order: 2;
+        font-size: 2rem;
+    }
+
+    .main-header p {
+        order: 3;
+    }
+
+    .menu-toggle {
+        display: block;
+        order: 1;
+    }
+}

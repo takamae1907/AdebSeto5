@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendário - ADEB Setor 5</title>
+    <link rel="stylesheet" href="calendario.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h2>ADEB Setor 5</h2>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i> Início</a></li>
+                <li class="active"><a href="festividades.html"><i class="fas fa-star"></i> Festividades</a></li>
+                <li class="active"><a href="calendario.html"><i class="fas fa-calendar-alt"></i> Calendário Geral</a></li>
+                <li><a href="igrejas.html"><i class="fas fa-church"></i> Igrejas</a></li>
+                <li><a href="documentos.html"><i class="fas fa-file-alt"></i> Documentos</a></li>
+                <li class="active"><a href="festividades.html"><i class="fas fa-star"></i> Festividades</a></li>
+                <li><a href="#"><i class="fas fa-users"></i> Liderança</a></li>
+                <li><a href="#"><i class="fas fa-envelope"></i> Contato</a></li>
+            </ul>
+        </nav>
+        <div class="sidebar-footer">
+            <p>&copy; 2025 ADEB Setor 5</p>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="main-header">
+             <button id="menu-toggle" class="menu-toggle"><i class="fas fa-bars"></i></button>
+            <h1>Calendário de Eventos</h1>
+            <p>Adicione e visualize os compromissos do Setor 5.</p>
+        </header>
+
+        <div class="calendar-container">
+            <div class="calendar-header">
+                <button id="prev-month-btn">&lt;</button>
+                <h3 id="current-month-year"></h3>
+                <button id="next-month-btn">&gt;</button>
+            </div>
+            <div class="calendar-weekdays">
+                <div>D</div><div>S</div><div>T</div><div>Q</div><div>Q</div><div>S</div><div>S</div>
+            </div>
+            <div class="calendar-days" id="calendar-days-grid"></div>
+        </div>
+    </main>
+
+    <aside class="right-sidebar">
+        <div class="week-events-container">
+            <h4>Eventos da Semana</h4>
+            <ul id="week-events-list">
+                </ul>
+        </div>
+        <div class="add-event-form">
+            <h4>Adicionar Novo Evento</h4>
+            <form id="event-form">
+                <input type="text" id="event-title" placeholder="Nome do Evento" required>
+                <input type="text" id="event-church" placeholder="Nome da Igreja" required>
+                <input type="date" id="event-date" required>
+                <input type="time" id="event-time" required>
+                <button type="submit">Adicionar Evento</button>
+            </form>
+        </div>
+    </aside>
+
+    <div id="event-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-modal-btn">&times;</button>
+            <div id="modal-body">
+                </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="calendario.js"></script>
+</body>
+</html>

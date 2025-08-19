@@ -44,7 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function carregarEventos() {
         // Limpa os eventos estáticos que estavam no HTML
-        // Pega todos os event-card e remove um por um
         const oldCards = eventsContainer.querySelectorAll('.event-card');
         oldCards.forEach(card => card.remove());
 
@@ -89,4 +88,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+
+    // --- 4. LÓGICA DO MENU RESPONSIVO (HAMBÚRGUER) ---
+    const menuToggle = document.getElementById('menu-toggle');
+    const sidebar = document.querySelector('.sidebar');
+    const mainContent = document.querySelector('.main-content');
+
+    if (menuToggle && sidebar) {
+        // Abre e fecha o menu ao clicar no botão
+        menuToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('is-open');
+        });
+
+        // Fecha o menu se o usuário clicar fora dele (no conteúdo principal)
+        mainContent.addEventListener('click', () => {
+            if (sidebar.classList.contains('is-open')) {
+                sidebar.classList.remove('is-open');
+            }
+        });
+    }
 });

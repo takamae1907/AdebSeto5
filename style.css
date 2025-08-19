@@ -22,19 +22,22 @@ body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     background-color: var(--background-color);
     color: var(--text-primary);
-    display: flex;
+    /* O body não precisa mais ser flex, pois as sidebars são fixas */
 }
 
-/* --- Barra Lateral (Sidebar) --- */
+/* --- Barra Lateral Esquerda (Sidebar) --- */
 .sidebar {
     width: 260px;
     background-color: var(--card-background);
     height: 100vh;
     position: fixed;
+    top: 0;
+    left: 0;
     border-right: 1px solid var(--border-color);
     display: flex;
     flex-direction: column;
     padding: 20px;
+    z-index: 1000;
 }
 
 .sidebar-header h2 {
@@ -77,9 +80,10 @@ body {
 
 /* --- Conteúdo Principal --- */
 .main-content {
-    margin-left: 260px; /* Mesma largura da sidebar */
+    margin-left: 260px; /* Espaço para a sidebar esquerda */
+    margin-right: 320px; /* Espaço para a nova sidebar direita */
     padding: 40px;
-    width: calc(100% - 260px);
+    width: calc(100% - 260px - 320px); /* Largura fluida no centro */
 }
 
 .main-header h1 {
@@ -199,4 +203,269 @@ h2 {
 
 .btn:hover {
     background-color: #005bb5; /* Um azul um pouco mais escuro */
+}
+
+
+/* =================================================== */
+/* --- NOVA SIDEBAR DIREITA --- */
+/* =================================================== */
+.right-sidebar {
+    width: 320px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: var(--card-background);
+    border-left: 1px solid var(--border-color);
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.right-sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.right-sidebar-header h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.right-sidebar-header a {
+    text-decoration: none;
+    color: var(--blue-primary);
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.reminders-container h4 {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    letter-spacing: 0.5px;
+}
+
+.reminder-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background-color: var(--background-color);
+    border-radius: 16px;
+    margin-bottom: 10px;
+}
+
+.reminder-icon-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--blue-primary);
+    border-radius: 50%;
+    flex-shrink: 0; /* Impede que o ponto encolha */
+}
+
+.reminder-content .reminder-title {
+    font-weight: 500;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    margin-bottom: 2px;
+}
+
+.reminder-content .reminder-time {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+
+/* =================================================== */
+/* RESPONSIVIDADE */
+/* =================================================== */
+
+.menu-toggle {
+    display: none; /* Escondido em telas grandes por padrão */
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-bottom: 15px;
+    z-index: 1100;
+}
+
+/* Oculta a sidebar direita em telas médias para não espremer o conteúdo */
+@media (max-width: 1200px) {
+    .right-sidebar {
+        display: none;
+    }
+    .main-content {
+        width: calc(100% - 260px);
+        margin-right: 0;
+    }
+}
+
+/* Para tablets e celulares, onde a sidebar esquerda também fica oculta */
+@media (max-width: 992px) {
+    .sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+    }
+    
+    .sidebar.is-open {
+        transform: translateX(0);
+    }
+
+    .main-content {
+        width: 100%;
+        margin-left: 0; /* Ocupa a tela inteira */
+        padding: 20px;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .main-header h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Para celulares pequenos */
+@media (max-width: 480px) {
+    .main-header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .event-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .church-grid {
+        grid-template-columns: 1fr;
+    }
+}
+/* =================================================== */
+/* --- ESTILOS DA PÁGINA DE FESTIVIDADES --- */
+/* =================================================== */
+
+.festividade-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.festividade-card {
+    display: flex;
+    align-items: center;
+    background-color: var(--card-background);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.festividade-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+.festividade-card-icon {
+    font-size: 1.5rem;
+    color: var(--blue-primary);
+    margin-right: 20px;
+}
+.festividade-card-info {
+    flex-grow: 1;
+}
+.festividade-card-info h3 {
+    font-weight: 600;
+    margin-bottom: 3px;
+}
+.festividade-card-info span {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+.festividade-card-arrow {
+    font-size: 1.2rem;
+    color: var(--border-color);
+}
+
+
+/* =================================================== */
+/* --- ESTILOS DA PÁGINA DE DETALHES (DOSSIÊ) --- */
+/* =================================================== */
+.dossie-container {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+}
+.dossie-col-main { flex: 1.5; display: flex; flex-direction: column; gap: 30px; }
+.dossie-col-sidebar { flex: 1; }
+
+.info-card, .poster-display-card, .documents-card {
+    background-color: var(--card-background);
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    padding: 25px;
+}
+.info-card h4, .poster-display-card h4, .documents-card h4 {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+#event-details-form .form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+#event-details-form label {
+    font-weight: 500;
+    width: 120px;
+}
+#event-details-form input {
+    flex-grow: 1;
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+#event-details-form button {
+    width: 100%;
+    margin-top: 10px;
+}
+#event-poster-img {
+    width: 100%;
+    border-radius: 8px;
+}
+.documents-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.documents-card-header h4 {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+.btn-small {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+}
+.documents-card .table-container {
+    padding: 0;
+    box-shadow: none;
+    margin-top: 15px;
+}
+.documents-card table th, .documents-card table td {
+    padding: 12px 5px;
 }

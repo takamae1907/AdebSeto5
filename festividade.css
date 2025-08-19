@@ -1,0 +1,636 @@
+/* =================================================== */
+/* ARQUIVO DE ESTILO PRINCIPAL - V2.0 (REDESIGN)       */
+/* =================================================== */
+
+/* --- FONTES DO GOOGLE --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600&display=swap');
+
+/* --- VARIÁVEIS DE DESIGN --- */
+:root {
+    /* Cores */
+    --blue-primary: #0071e3;
+    --blue-dark: #005bb5;
+    --blue-light: #eaf5ff;
+    --accent-gold: #ffb700;
+    --text-primary: #1d1d1f;
+    --text-secondary: #5a6470;
+    --background-light: #f7f9fc;
+    --background-white: #ffffff;
+    --border-color: #e1e4e8;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+
+    /* Gradiente */
+    --main-gradient: linear-gradient(90deg, var(--blue-dark) 0%, var(--blue-primary) 100%);
+
+    /* Tipografia */
+    --font-heading: 'Poppins', sans-serif;
+    --font-body: 'Inter', sans-serif;
+
+    /* Estilos */
+    --main-shadow: 0 8px 24px rgba(102, 119, 136, 0.08);
+    --subtle-shadow: 0 4px 12px rgba(102, 119, 136, 0.05);
+    --main-radius: 16px;
+    --small-radius: 10px;
+}
+
+/* --- ESTILOS GLOBAIS --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--background-light);
+    color: var(--text-primary);
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: var(--font-heading);
+}
+
+/* --- COMPONENTES REUTILIZÁVEIS --- */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--main-gradient);
+    color: var(--background-white);
+    padding: 12px 24px;
+    border-radius: var(--small-radius);
+    text-decoration: none;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 113, 227, 0.2);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 113, 227, 0.3);
+}
+
+.card {
+    background-color: var(--background-white);
+    border-radius: var(--main-radius);
+    box-shadow: var(--subtle-shadow);
+    padding: 25px;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: var(--main-shadow);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    font-family: var(--font-body);
+    border: 1px solid var(--border-color);
+    border-radius: var(--small-radius);
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--blue-primary);
+    box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.15);
+}
+
+/* --- LAYOUT PRINCIPAL --- */
+.sidebar {
+    width: 260px;
+    background-color: var(--background-white);
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    z-index: 1000;
+}
+
+.main-content {
+    margin-left: 260px;
+    padding: 40px;
+    width: calc(100% - 260px);
+}
+
+.main-header {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.main-header h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+}
+
+.main-header p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-top: 5px;
+}
+
+.page-title {
+    /* Helper para títulos de seção */
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+/* --- SIDEBAR --- */
+.sidebar-header {
+    padding: 10px 0 20px 0;
+}
+
+.sidebar-header h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.sidebar nav ul {
+    list-style: none;
+}
+
+.sidebar nav li a {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 14px 15px;
+    margin: 5px 0;
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-weight: 600;
+    border-radius: var(--small-radius);
+    transition: all 0.3s ease;
+}
+
+.sidebar nav li a .fas {
+    font-size: 1.1rem;
+    width: 25px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.sidebar nav li a:hover {
+    background-color: var(--blue-light);
+    color: var(--blue-dark);
+}
+
+.sidebar nav li.active a {
+    background: var(--main-gradient);
+    color: var(--background-white);
+    box-shadow: 0 4px 15px rgba(0, 113, 227, 0.2);
+}
+
+.sidebar nav li.active a .fas {
+    transform: scale(1.1);
+}
+
+.sidebar-footer {
+    margin-top: auto;
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+/* --- MODAL --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background-color: var(--background-white);
+    border-radius: var(--main-radius);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+}
+
+.close-modal-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--text-secondary);
+}
+
+/* ============================================== */
+/* --- ESTILOS ESPECÍFICOS DAS PÁGINAS --- */
+/* ============================================== */
+
+/* --- INDEX (HOME) --- */
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.event-card-home {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    transition: background-color 0.3s;
+    border-radius: var(--small-radius);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.event-card-home:last-child {
+    border-bottom: none;
+}
+
+.event-card-home:hover {
+    background-color: var(--blue-light);
+}
+
+.event-date-home {
+    text-align: center;
+    margin-right: 20px;
+    color: var(--blue-primary);
+    font-weight: 700;
+}
+
+.event-date-home span {
+    font-size: 1.8rem;
+    display: block;
+    line-height: 1;
+}
+
+.event-details-home h3 {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 3px;
+}
+
+.event-details-home p {
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+}
+
+.church-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 25px;
+}
+
+.church-card {
+    text-align: center;
+}
+
+.pastor-photo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 4px solid var(--background-white);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.church-card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.church-card p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+/* --- CALENDÁRIO --- */
+.calendar-container {
+    padding: 30px;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.calendar-header button {
+    background: var(--blue-light);
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: var(--blue-dark);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.calendar-weekdays,
+.calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    gap: 10px;
+}
+
+.calendar-days div {
+    aspect-ratio: 1 / 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 50%;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.calendar-days div.day:not(.empty):hover {
+    background-color: var(--blue-light);
+    color: var(--blue-dark);
+}
+
+.calendar-days .today {
+    background: var(--main-gradient);
+    color: #fff;
+    font-weight: bold;
+}
+
+.calendar-days .event-day::after {
+    content: '';
+    position: absolute;
+    bottom: 15%;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--accent-gold);
+}
+
+.calendar-days .today.event-day::after {
+    background-color: #fff;
+}
+
+/* --- DOCUMENTOS E GENÉRICOS DE TABELA --- */
+.document-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.search-filter-wrapper {
+    display: flex;
+    gap: 15px;
+    flex-grow: 1;
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table thead th {
+    text-align: left;
+    padding: 15px;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-bottom: 2px solid var(--border-color);
+}
+
+table tbody td {
+    padding: 15px;
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: middle;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.action-btn {
+    background: none;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.action-btn:hover {
+    background-color: var(--blue-light);
+    color: var(--text-primary);
+}
+
+.file-drop-area {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    border: 2px dashed var(--border-color);
+    border-radius: var(--small-radius);
+    text-align: center;
+}
+
+.file-drop-area .fas {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: var(--blue-primary);
+}
+
+.file-input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+    opacity: 0;
+}
+
+/* --- CARTAZES --- */
+.poster-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.poster-card {
+    overflow: hidden;
+    position: relative;
+}
+
+.poster-image-wrapper {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+}
+
+.poster-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.poster-info {
+    padding: 20px;
+}
+
+.poster-actions {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
+/* --- FESTIVIDADES --- */
+.festividade-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+
+.festividade-card {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--text-primary);
+}
+
+.festividade-card-icon {
+    font-size: 1.5rem;
+    color: var(--accent-gold);
+    margin-right: 20px;
+}
+
+.festividade-card-info {
+    flex-grow: 1;
+}
+
+.dossie-container {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+.documents-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* --- RESPONSIVIDADE --- */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 1100;
+}
+
+@media (max-width: 1200px) {
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 992px) {
+    .sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .sidebar.is-open {
+        transform: translateX(0);
+    }
+
+    .main-content {
+        width: 100%;
+        margin-left: 0;
+        padding: 20px;
+    }
+
+    .main-header {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .main-header h1 {
+        width: 100%;
+        order: 2;
+        font-size: 2rem;
+    }
+
+    .main-header p {
+        order: 3;
+    }
+
+    .menu-toggle {
+        display: block;
+        order: 1;
+    }
+
+    .dossie-container {
+        grid-template-columns: 1fr;
+    }
+}

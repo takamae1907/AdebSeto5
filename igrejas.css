@@ -1,0 +1,46 @@
+/* Adicione estas novas regras ao final do seu style.css */
+
+/* --- Layout para páginas sem a sidebar da direita --- */
+/* A classe no body garante que esta regra só se aplique às páginas certas */
+.page-full-content .main-content {
+    margin-right: 0;
+    width: calc(100% - 260px);
+}
+
+/* --- Ajustes no Card da Igreja para incluir o endereço --- */
+.church-card h3 {
+    margin-bottom: 8px; /* Pequeno ajuste de espaço */
+}
+
+.church-card .church-address {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 30px; /* Garante alinhamento mesmo se um card não tiver endereço */
+}
+
+.church-card .pastor-title {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+}
+
+
+/* --- Ajuste na responsividade para a nova página --- */
+@media (max-width: 1200px) {
+    /* Garante que o layout continue correto mesmo quando a sidebar some */
+    .page-full-content .main-content {
+        width: calc(100% - 260px);
+        margin-right: 0;
+    }
+}
+@media (max-width: 992px) {
+    .page-full-content .main-content {
+        width: 100%;
+        margin-left: 0;
+    }
+}

@@ -1,0 +1,435 @@
+/* Importando uma fonte limpa do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* --- Variáveis de Cores e Estilos Globais --- */
+:root {
+    --blue-primary: #0071e3;
+    --background-color: #f5f5f7;
+    --card-background: #ffffff;
+    --text-primary: #1d1d1f;
+    --text-secondary: #6e6e73;
+    --border-color: #d2d2d7;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-primary);
+}
+
+/* --- Layout Principal (3 Colunas) --- */
+.main-content {
+    margin-left: 260px;
+    margin-right: 340px;
+    /* Espaço para a sidebar direita */
+    padding: 40px;
+    width: calc(100% - 260px - 340px);
+}
+
+.sidebar,
+.right-sidebar {
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--card-background);
+}
+
+/* --- Barra Lateral Esquerda (Sidebar) --- */
+.sidebar {
+    width: 260px;
+    left: 0;
+    border-right: 1px solid var(--border-color);
+    padding: 20px;
+    z-index: 1000;
+}
+
+.sidebar-header h2 {
+    font-weight: 600;
+    padding-bottom: 20px;
+}
+
+.sidebar nav ul {
+    list-style: none;
+}
+
+.sidebar nav li a {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 15px;
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-weight: 500;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.sidebar nav li a .fas {
+    width: 20px;
+    text-align: center;
+}
+
+.sidebar nav li a:hover,
+.sidebar nav li.active a {
+    background-color: var(--blue-primary);
+    color: #fff;
+}
+
+.sidebar-footer {
+    margin-top: auto;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+/* --- Barra Lateral Direita (Right Sidebar) --- */
+.right-sidebar {
+    width: 340px;
+    right: 0;
+    border-left: 1px solid var(--border-color);
+    padding: 25px;
+    gap: 25px;
+    overflow-y: auto;
+    /* Permite rolagem se o conteúdo for grande */
+}
+
+/* --- Conteúdo Principal --- */
+.main-header {
+    margin-bottom: 25px;
+}
+
+.main-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.main-header p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-top: 5px;
+}
+
+/* =================================================== */
+/* --- ESTILOS ESPECÍFICOS DO CALENDÁRIO --- */
+/* =================================================== */
+.calendar-container {
+    background-color: var(--card-background);
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    padding: 25px;
+    max-width: 800px; /* <-- Adiciona uma largura máxima */
+    margin: 0 auto;   /* <-- Centra o calendário no espaço disponível */
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.calendar-header button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-primary);
+}
+
+.calendar-header h3 {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.calendar-weekdays,
+.calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    gap: 8px;
+}
+
+.calendar-weekdays div {
+    font-weight: 600;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.calendar-days div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 50%;
+    position: relative;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    color: var(--text-primary);
+    aspect-ratio: 1 / 1;
+}
+
+.calendar-days div.day:not(.empty):hover {
+    background-color: #f0f0f0;
+}
+
+.calendar-days .today {
+    background-color: var(--blue-primary);
+    color: #fff;
+    font-weight: bold;
+}
+
+.calendar-days .event-day::after {
+    content: '';
+    position: absolute;
+    bottom: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: var(--blue-primary);
+}
+
+.calendar-days .today.event-day::after {
+    background-color: #fff;
+}
+
+.calendar-days .empty {
+    cursor: default;
+}
+
+/* Sidebar Direita: Eventos da Semana e Formulário */
+.week-events-container,
+.add-event-form {
+    padding: 0;
+}
+
+/* Remove padding extra pois a sidebar já tem */
+.week-events-container h4,
+.add-event-form h4 {
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.week-events-container ul {
+    list-style: none;
+    padding: 0;
+}
+
+.week-events-container li {
+    display: flex;
+    align-items: flex-start;
+    padding: 15px 0;
+    border-bottom: 1px solid #e9e9ed;
+}
+
+.week-events-container li:last-child {
+    border-bottom: none;
+}
+
+.week-events-container li::before {
+    content: '';
+    display: block;
+    width: 9px;
+    height: 9px;
+    background-color: var(--blue-primary);
+    border-radius: 50%;
+    margin-right: 15px;
+    margin-top: 6px;
+    flex-shrink: 0;
+}
+
+.week-events-container .event-text strong {
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.week-events-container .event-text span {
+    font-size: 0.9em;
+    color: var(--text-secondary);
+    margin-top: 3px;
+    display: block;
+}
+
+.add-event-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.add-event-form input {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--background-color);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.add-event-form input:focus {
+    outline: none;
+    border-color: var(--blue-primary);
+    box-shadow: 0 0 0 2px rgba(0, 113, 227, 0.2);
+}
+
+.add-event-form button {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    background-color: var(--blue-primary);
+    color: #fff;
+    border: none;
+    padding: 12px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.add-event-form button:hover {
+    background-color: #005bb5;
+}
+
+/* --- Modal de Eventos --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.modal-content {
+    background-color: var(--card-background);
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    padding: 25px;
+    width: 90%;
+    max-width: 450px;
+    position: relative;
+    color: var(--text-primary);
+}
+
+.close-modal-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--text-primary);
+}
+
+#modal-body h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+#modal-body .modal-event-item {
+    padding: 15px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+#modal-body .modal-event-item:last-child {
+    border-bottom: none;
+}
+
+#modal-body .modal-event-item strong {
+    display: block;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+}
+
+#modal-body .modal-event-item p {
+    color: var(--text-secondary);
+    margin: 4px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* =================================================== */
+/* --- RESPONSIVIDADE --- */
+/* =================================================== */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 1100;
+}
+
+@media (max-width: 1200px) {
+    .right-sidebar {
+        display: none;
+    }
+
+    .main-content {
+        width: calc(100% - 260px);
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 992px) {
+    .main-header {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .main-header h1 {
+        width: 100%;
+        order: 2;
+    }
+
+    .main-header p {
+        order: 3;
+    }
+
+    .menu-toggle {
+        display: block;
+        order: 1;
+    }
+
+    .sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .sidebar.is-open {
+        transform: translateX(0);
+    }
+
+    .main-content {
+        width: 100%;
+        margin-left: 0;
+        padding: 20px;
+    }
+
+    .main-header h1 {
+        font-size: 2rem;
+    }
+}

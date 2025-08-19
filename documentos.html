@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentos - ADEB Setor 5</title>
+    <link rel="stylesheet" href="documentos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body class="page-full-content">
+
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h2>ADEB Setor 5</h2>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i> Início</a></li>
+                <li class="active"><a href="festividades.html"><i class="fas fa-star"></i> Festividades</a></li>
+                <li><a href="calendario.html"><i class="fas fa-calendar-alt"></i> Calendário Geral</a></li>
+                <li><a href="igrejas.html"><i class="fas fa-church"></i> Igrejas</a></li>
+                <li class="active"><a href="documentos.html"><i class="fas fa-file-alt"></i> Documentos</a></li>
+                <li class="active"><a href="festividades.html"><i class="fas fa-star"></i> Festividades</a></li>
+                <li><a href="#"><i class="fas fa-users"></i> Liderança</a></li>
+                <li><a href="#"><i class="fas fa-envelope"></i> Contato</a></li>
+            </ul>
+        </nav>
+        <div class="sidebar-footer">
+            <p>&copy; 2025 ADEB Setor 5</p>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="main-header">
+            <button id="menu-toggle" class="menu-toggle"><i class="fas fa-bars"></i></button>
+            <h1>Gerenciador de Documentos</h1>
+            <p>Adicione, organize e acesse os arquivos importantes do Setor 5.</p>
+        </header>
+
+        <section class="document-manager">
+            <div class="document-controls">
+                <div class="search-filter-wrapper">
+                    <input type="search" id="search-input" placeholder="Buscar por nome...">
+                    <select id="category-filter">
+                        <option value="all">Todas as Categorias</option>
+                        <option value="Ata de Reunião">Ata de Reunião</option>
+                        <option value="Relatório Financeiro">Relatório Financeiro</option>
+                        <option value="Circular">Circular</option>
+                        <option value="Estatuto">Estatuto</option>
+                    </select>
+                </div>
+                <button id="add-document-btn" class="btn"><i class="fas fa-plus"></i> Adicionar Documento</button>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome do Arquivo</th>
+                            <th>Categoria</th>
+                            <th>Data de Upload</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="documents-table-body">
+                        </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <div id="document-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-modal-btn">&times;</button>
+            <h3 id="modal-title">Adicionar Novo Documento</h3>
+            <form id="document-form">
+                <input type="hidden" id="document-id">
+                <div class="form-group">
+                    <label for="document-name">Nome do Documento</label>
+                    <input type="text" id="document-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="document-category">Categoria</label>
+                    <select id="document-category" required>
+                        <option value="Ata de Reunião">Ata de Reunião</option>
+                        <option value="Relatório Financeiro">Relatório Financeiro</option>
+                        <option value="Circular">Circular</option>
+                        <option value="Estatuto">Estatuto</option>
+                        <option value="Outro">Outro</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="document-file-input">Arquivo</label>
+                    <div class="file-drop-area">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>Arraste e solte o arquivo aqui, ou clique para selecionar</p>
+                        <input type="file" id="document-file-input" class="file-input">
+                        <small id="file-name-display"></small>
+                    </div>
+                    <small>Apenas o nome do arquivo será salvo. O upload real requer um servidor.</small>
+                </div>
+                <button type="submit" class="btn">Salvar Documento</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="documentos.js"></script>
+</body>
+</html>
