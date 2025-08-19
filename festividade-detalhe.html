@@ -8,14 +8,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body>
-
     <aside class="sidebar">
-        <div class="sidebar-header"> <h2>ADEB Setor 5</h2> </div>
+        <div class="sidebar-header"><h2>ADEB Setor 5</h2></div>
         <nav>
             <ul>
                 <li><a href="index.html"><i class="fas fa-home"></i> Início</a></li>
                 <li class="active"><a href="festividades.html"><i class="fas fa-star"></i> Festividades</a></li>
-                <li><a href="calendario.html"><i class="fas fa-calendar-alt"></i> Calendário Geral</a></li>
+                <li><a href="calendario.html"><i class="fas fa-calendar-alt"></i> Calendário</a></li>
                 <li><a href="igrejas.html"><i class="fas fa-church"></i> Igrejas</a></li>
                 <li><a href="documentos.html"><i class="fas fa-file-alt"></i> Documentos</a></li>
                 <li><a href="cartazes.html"><i class="fas fa-image"></i> Cartazes</a></li>
@@ -23,46 +22,44 @@
                 <li><a href="#"><i class="fas fa-envelope"></i> Contato</a></li>
             </ul>
         </nav>
-        <div class="sidebar-footer"> <p>&copy; 2025 ADEB Setor 5</p> </div>
+        <div class="sidebar-footer"><p>&copy; 2025 ADEB Setor 5</p></div>
     </aside>
 
     <main class="main-content">
         <header class="main-header">
             <button id="menu-toggle" class="menu-toggle"><i class="fas fa-bars"></i></button>
-            <h1 id="event-title">Carregando Festividade...</h1>
+            <h1 id="event-title">Carregando...</h1>
             <p><a href="festividades.html" style="color: var(--blue-primary); text-decoration: none;">&larr; Voltar para todas as festividades</a></p>
         </header>
 
         <section class="dossie-container">
-            <div>
-                <div class="card poster-display-card">
-                    <h4 class="page-title">Cartaz do Evento</h4>
-                    <img id="event-poster-img" src="https://via.placeholder.com/400x500.png?text=Sem+Cartaz" alt="Cartaz do Evento" style="width: 100%; border-radius: var(--small-radius);">
-                </div>
+            <div class="card" style="grid-column: 1 / -1;">
+                <h2 class="page-title">Informações Principais</h2>
+                <form id="event-details-form">
+                    <div class="form-group"><label>Data:</label><input type="date" id="event-date"></div>
+                    <div class="form-group"><label>Horário:</label><input type="time" id="event-time"></div>
+                    <div class="form-group"><label>Local:</label><input type="text" id="event-location"></div>
+                    <div class="form-group"><label>URL do Cartaz:</label><input type="text" id="event-poster-url"></div>
+                    <button type="submit" class="btn">Salvar Alterações</button>
+                </form>
             </div>
             
+            <div class="card">
+                <h2 class="page-title">Cartaz do Evento</h2>
+                <img id="event-poster-img" src="https://via.placeholder.com/400x500.png?text=Sem+Cartaz" alt="Cartaz" style="width: 100%; border-radius: var(--small-radius);">
+            </div>
+
             <div class="card documents-card">
                  <div class="documents-card-header">
-                    <h4 class="page-title">Documentos do Evento</h4>
+                    <h2 class="page-title">Documentos</h2>
                     <button id="add-event-doc-btn" class="btn" style="padding: 8px 15px; font-size: 0.9rem;"><i class="fas fa-plus"></i> Adicionar</button>
                 </div>
                 <div class="table-container">
                     <table>
-                        <thead> <tr><th>Nome</th><th>Ações</th></tr> </thead>
+                        <thead><tr><th>Nome</th><th>Ações</th></tr></thead>
                         <tbody id="event-docs-tbody"></tbody>
                     </table>
                 </div>
-            </div>
-            
-            <div class="card info-card" style="grid-column: 1 / -1;">
-                <h4 class="page-title">Informações Principais</h4>
-                <form id="event-details-form">
-                    <div class="form-group"> <label>Data:</label> <input type="date" id="event-date"> </div>
-                    <div class="form-group"> <label>Horário:</label> <input type="time" id="event-time"> </div>
-                    <div class="form-group"> <label>Local:</label> <input type="text" id="event-location" placeholder="Endereço ou nome da igreja"> </div>
-                    <div class="form-group"> <label>URL do Cartaz:</label> <input type="text" id="event-poster-url" placeholder="https://link-para-imagem.com/cartaz.png"> </div>
-                    <button type="submit" class="btn">Salvar Alterações</button>
-                </form>
             </div>
         </section>
     </main>
